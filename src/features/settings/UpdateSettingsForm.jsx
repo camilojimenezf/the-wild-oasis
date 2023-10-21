@@ -1,10 +1,11 @@
-import Spinner from 'ui/Spinner';
-import { useSettings } from 'features/settings/useSettings';
-import { useUpdateSetting } from 'features/settings/useUpdateSetting';
 
-import Form from 'ui/Form';
-import FormRow from 'ui/FormRow';
-import Input from 'ui/Input';
+import { useSettings } from './useSettings';
+import { useEditSetting } from './useEditSetting';
+
+import Form from '../../ui/Form';
+import FormRow from '../../ui/FormRow';
+import Input from '../../ui/Input';
+import Spinner from '../../ui/Spinner';
 
 function UpdateSettingsForm() {
   const {
@@ -16,9 +17,8 @@ function UpdateSettingsForm() {
     } = {},
     isLoading,
   } = useSettings();
-  const { mutate: updateSetting, isLoading: isUpdating } = useUpdateSetting();
+  const { mutate: updateSetting, isLoading: isUpdating } = useEditSetting();
 
-  // return <Spinner />;
   if (isLoading) return <Spinner />;
 
   function handleBlur(e, field) {
